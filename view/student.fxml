@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="center" spacing="10" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+
+	<stylesheets><URL value="@style.css" /></stylesheets>
+   <children>
+      <AnchorPane prefHeight="596.0" prefWidth="750.0" />
+   </children>
+	
+</VBox>

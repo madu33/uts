@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="center" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UniversityController">
+    
+  <stylesheets><URL value="@style.css" /></stylesheets>
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+         <children>
+            <ImageView fitHeight="61.0" fitWidth="170.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@uts.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tbStudent" layoutX="61.0" layoutY="100.0" onMouseClicked="#selectStudent" prefHeight="222.0" prefWidth="398.0">
+              <columns>
+                <TableColumn fx:id="tbNumber" prefWidth="195.0" text="Number" />
+                <TableColumn fx:id="tbName" prefWidth="202.0" text="Name" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnAddStudent" layoutX="61.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#AddNewStudent" prefHeight="25.0" prefWidth="124.0" text="Add Student" />
+            <Button fx:id="btnRemoveStudent" layoutX="202.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnRemoveStudent" prefHeight="25.0" prefWidth="124.0" text="Remove Student " />
+            <Button fx:id="btnLogin" layoutX="343.0" layoutY="349.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="113.0" text="Login" />
+         </children>
+      </AnchorPane>
+   </children>
+  
+</VBox>
