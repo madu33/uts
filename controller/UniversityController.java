@@ -19,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Student;
 import model.University;
+import observer.Observable;
+import observer.Observer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 public class UniversityController extends Controller implements Initializable {
 
 
-    static University university=new University();
+    University university=new University(); // create university object
     ObservableList<Student> students;
     static Stage thisStage;
 
@@ -75,7 +77,7 @@ public class UniversityController extends Controller implements Initializable {
     @FXML
     void login(ActionEvent event) {
         try {
-            ViewLoader.showStage(new Student(), "/view/student.fxml", "Student", stage);
+            ViewLoader.showStage(new Student(), "/view/student.fxml", "Student", new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +86,7 @@ public class UniversityController extends Controller implements Initializable {
     @FXML
     void AddNewStudent(MouseEvent event) {
         try {
-            ViewLoader.showStage(university, "/view/add_student.fxml", "Add New Student", stage);
+            ViewLoader.showStage(university, "/view/add_student.fxml", "Add New Student", new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,4 +104,6 @@ public class UniversityController extends Controller implements Initializable {
         Student student = tbStudent.getSelectionModel().getSelectedItem();
         university.remove(student);
     }
+
+
 }

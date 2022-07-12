@@ -5,7 +5,7 @@ import javafx.collections.*;
 
 public class University {
 	private ObservableList<Subject> subjects = FXCollections.observableArrayList();
-	private  ObservableList<Student> students = FXCollections.observableArrayList();
+	private ObservableList<Student> students = FXCollections.observableArrayList();
 
 	public University() {
 		Subject ap = new Subject(48024, "Applications Programming");
@@ -22,12 +22,7 @@ public class University {
 		wsd.addActivity("Cmp1", 4, "Tue", 14, 2, "CB11.B1.103", 30);
 		subjects.add(wsd);
 		Student student = new Student(this, "12345678", "Angela Sladen", "ft", false);
-		if(!students.contains(student)){
 			students.add(student);
-		}
-
-		System.out.println("size student"+students.size());
-
 	}
 
 	public final ObservableList<Subject> getSubjects() {
