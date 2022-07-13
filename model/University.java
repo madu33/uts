@@ -1,6 +1,9 @@
 package model;
 
 import java.util.*;
+
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.*;
 
 public class University {
@@ -23,6 +26,7 @@ public class University {
 		subjects.add(wsd);
 		Student student = new Student(this, "12345678", "Angela Sladen", "ft", false);
 			students.add(student);
+		System.out.println("create a new object");
 	}
 
 	public final ObservableList<Subject> getSubjects() {
@@ -36,9 +40,9 @@ public class University {
 	public void addStudent(String number, String name, String attendance, boolean scholarship) throws Exception {
 		if (student(number) != null) throw new Exception("Student already exists");
 		students.add(new Student(this, number, name, attendance, scholarship));
-		System.out.println("now size"+ students.size());
 	}
 
+	
 	public void remove(Student student) {
 		student.remove();
 		students.remove(student);
@@ -57,4 +61,15 @@ public class University {
 				return subject;
 		return null;
 	}
+
+	private static University obj;
+
+	public static University getInstance()
+	{
+		if (obj==null)
+			obj = new University();
+		return obj;
+	}
+
+
 }

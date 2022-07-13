@@ -11,9 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.University;
-import observer.Channel;
-import observer.Observable;
-import observer.Observer;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,11 +23,10 @@ public class AddNewStudentController extends Controller implements Initializable
     String attendance;
     boolean scholarship=false;
     University university;
-    Channel channel=new Channel();
 
-    public AddNewStudentController() {
 
-    }
+
+
 
     @FXML
     private Button btnAddStudent;
@@ -75,7 +72,7 @@ public class AddNewStudentController extends Controller implements Initializable
         System.out.println(scholarship);
         try {
             university.addStudent(stuNumber,stuName,attendance,scholarship);
-            channel.addNewStudent();
+
         } catch (Exception e) {
             lbError.setText("Student already exists");
         }
@@ -111,9 +108,10 @@ public class AddNewStudentController extends Controller implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         rdFullTime.setToggleGroup(toggleGroup);
         rdPartTime.setToggleGroup(toggleGroup);
-        university=new University();
+        university=University.getInstance();
         btnAddStudent.setDisable(true);
     }
+
 
 
 }

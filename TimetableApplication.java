@@ -1,7 +1,10 @@
 import au.edu.uts.ap.javafx.*;
+import controller.AddNewStudentController;
+import controller.UniversityController;
 import model.*;
 import javafx.application.*;
 import javafx.stage.*;
+
 
 public class TimetableApplication extends Application {
 
@@ -11,9 +14,13 @@ public class TimetableApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-         ViewLoader.showStage(new University(), "/view/university.fxml", "Main menu", stage);
+
+         ViewLoader.showStage(University.getInstance(), "/view/university.fxml", "Main menu", stage);
 
     }
+
+
+
 
 
 }

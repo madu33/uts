@@ -19,8 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Student;
 import model.University;
-import observer.Observable;
-import observer.Observer;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,9 +27,9 @@ import java.util.ResourceBundle;
 public class UniversityController extends Controller implements Initializable {
 
 
-    University university=new University(); // create university object
+    University university;
+
     ObservableList<Student> students;
-    static Stage thisStage;
 
     @FXML
     private TableColumn<Student, String> tbName;
@@ -53,9 +52,10 @@ public class UniversityController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        university=University.getInstance();
         btnRemoveStudent.setDisable(true);
         btnLogin.setDisable(true);
+        students = university.getStudents();
 
         loadStudentData(); // load student data from University Model class
 
@@ -93,7 +93,6 @@ public class UniversityController extends Controller implements Initializable {
     }
 
     public void loadStudentData() {
-        students = university.getStudents();
         tbNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
         tbName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbStudent.setItems(this.students);
