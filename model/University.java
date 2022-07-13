@@ -25,8 +25,7 @@ public class University {
 		wsd.addActivity("Cmp1", 4, "Tue", 14, 2, "CB11.B1.103", 30);
 		subjects.add(wsd);
 		Student student = new Student(this, "12345678", "Angela Sladen", "ft", false);
-			students.add(student);
-		System.out.println("create a new object");
+		students.add(student);
 	}
 
 	public final ObservableList<Subject> getSubjects() {
@@ -42,7 +41,7 @@ public class University {
 		students.add(new Student(this, number, name, attendance, scholarship));
 	}
 
-	
+
 	public void remove(Student student) {
 		student.remove();
 		students.remove(student);

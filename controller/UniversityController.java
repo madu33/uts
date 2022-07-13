@@ -77,7 +77,8 @@ public class UniversityController extends Controller implements Initializable {
     @FXML
     void login(ActionEvent event) {
         try {
-            ViewLoader.showStage(new Student(), "/view/student.fxml", "Student", new Stage());
+            Student student = tbStudent.getSelectionModel().getSelectedItem();
+            ViewLoader.showStage(student, "/view/student.fxml", "Student", new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }

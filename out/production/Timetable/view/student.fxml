@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="center" spacing="10" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="center" spacing="10" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentController">
 
 	<stylesheets><URL value="@style.css" /></stylesheets>
    <children>
-      <AnchorPane prefHeight="596.0" prefWidth="750.0" />
+      <AnchorPane prefHeight="668.0" prefWidth="755.0">
+         <children>
+            <Pane id="studentHeader" prefHeight="139.0" prefWidth="755.0" stylesheets="@style.css">
+               <children>
+                  <Label id="lbHeaderName" fx:id="lbHeaderName" layoutX="16.0" layoutY="15.0" prefHeight="65.0" prefWidth="488.0" />
+                  <Pane id="lbDetailsPane" layoutX="511.0" layoutY="13.0" prefHeight="110.0" prefWidth="229.0">
+                     <children>
+                        <Label fx:id="stuNumber" layoutX="120.0" layoutY="20.0" prefHeight="17.0" prefWidth="105.0" />
+                        <Label fx:id="stuAttendance" layoutX="120.0" layoutY="44.0" prefHeight="17.0" prefWidth="105.0" />
+                        <Label fx:id="stuScholarship" layoutX="120.0" layoutY="70.0" prefHeight="17.0" prefWidth="105.0" />
+                        <Label layoutX="7.0" layoutY="21.0" prefHeight="17.0" prefWidth="105.0" text="Student Number : " />
+                        <Label layoutX="7.0" layoutY="45.0" prefHeight="17.0" prefWidth="105.0" text="Attendance  :" />
+                        <Label layoutX="7.0" layoutY="71.0" prefHeight="17.0" prefWidth="105.0" text="Scholarship :" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutY="139.0" prefHeight="58.0" prefWidth="750.0">
+               <children>
+                  <Label id="lbMyActivity" layoutX="19.0" layoutY="21.0" prefHeight="17.0" prefWidth="256.0" text="My Activities" />
+               </children>
+            </Pane>
+            <TableView layoutY="198.0" prefHeight="181.0" prefWidth="755.0">
+              <columns>
+                <TableColumn prefWidth="85.0" text="Subject" />
+                <TableColumn prefWidth="72.0" text="Group" />
+                  <TableColumn text="Activity" />
+                  <TableColumn prefWidth="74.0" text="Day" />
+                  <TableColumn text="Start" />
+                  <TableColumn prefWidth="76.0" text="Duration" />
+                  <TableColumn prefWidth="100.0" text="Room" />
+                  <TableColumn prefWidth="91.0" text="Capacity" />
+                  <TableColumn prefWidth="96.0" text="Enrolled" />
+              </columns>
+            </TableView>
+            <Pane layoutX="5.0" layoutY="379.0" prefHeight="58.0" prefWidth="750.0">
+               <children>
+                  <ComboBox fx:id="comSubject" layoutX="309.0" layoutY="17.0" onAction="#chooseSubject" prefHeight="25.0" prefWidth="289.0" promptText="Choose Subject" />
+                  <Label id="lbEnrolIntoSubject" layoutX="14.0" layoutY="21.0" prefHeight="17.0" prefWidth="289.0" text="Enrol Into Subject" />
+               </children>
+            </Pane>
+            <Button layoutX="323.0" layoutY="626.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="LogOut" />
+            <TableView fx:id="tbSubject" layoutY="437.0" prefHeight="181.0" prefWidth="755.0">
+               <columns>
+                  <TableColumn fx:id="tbSubjectSubject" prefWidth="85.0" text="Subject" />
+                  <TableColumn fx:id="tbSubjectGroup" prefWidth="72.0" text="Group" />
+                  <TableColumn fx:id="tbSubjectActivity" text="Activity" />
+                  <TableColumn fx:id="tbSubjectDay" prefWidth="74.0" text="Day" />
+                  <TableColumn fx:id="tbSubjectStart" text="Start" />
+                  <TableColumn fx:id="tbSubjectDuration" prefWidth="76.0" text="Duration" />
+                  <TableColumn fx:id="tbSubjectRoom" prefWidth="100.0" text="Room" />
+                  <TableColumn fx:id="tbSubjectCapacity" prefWidth="91.0" text="Capacity" />
+                  <TableColumn fx:id="tbSubjectEnrolled" prefWidth="96.0" text="Enrolled" />
+               </columns>
+            </TableView>
+         </children></AnchorPane>
    </children>
 	
 </VBox>

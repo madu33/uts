@@ -73,3 +73,22 @@ Label {
   -fx-font-weight: bold;
   -fx-font-size: 12px;
 }
+
+#studentHeader{
+  -fx-background-color: #0099cc;
+}
+#lbHeaderName{
+  -fx-font-size: 30px;
+  -fx-text-fill: white;
+}
+#lbDetailsPane{
+  -fx-background-color: white;
+}
+#lbMyActivity{
+  -fx-text-fill: white;
+  -fx-font-size: 20px;
+}
+#lbEnrolIntoSubject{
+  -fx-text-fill: white;
+  -fx-font-size: 20px;
+}
