@@ -34,29 +34,31 @@
             <Pane layoutY="139.0" prefHeight="58.0" prefWidth="750.0">
                <children>
                   <Label id="lbMyActivity" layoutX="19.0" layoutY="21.0" prefHeight="17.0" prefWidth="256.0" text="My Activities" />
+                  <Button fx:id="btnWithdraw" layoutX="664.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnWithdraw" text="Withdraw" />
                </children>
             </Pane>
-            <TableView layoutY="198.0" prefHeight="181.0" prefWidth="755.0">
+            <TableView fx:id="tbActivity" layoutY="198.0" onMouseClicked="#selectActivityForWithdraw" prefHeight="181.0" prefWidth="755.0">
               <columns>
-                <TableColumn prefWidth="85.0" text="Subject" />
-                <TableColumn prefWidth="72.0" text="Group" />
-                  <TableColumn text="Activity" />
-                  <TableColumn prefWidth="74.0" text="Day" />
-                  <TableColumn text="Start" />
-                  <TableColumn prefWidth="76.0" text="Duration" />
-                  <TableColumn prefWidth="100.0" text="Room" />
-                  <TableColumn prefWidth="91.0" text="Capacity" />
-                  <TableColumn prefWidth="96.0" text="Enrolled" />
+                <TableColumn fx:id="tbActivitySubject" prefWidth="85.0" text="Subject" />
+                <TableColumn fx:id="tbActivityGroup" prefWidth="72.0" text="Group" />
+                  <TableColumn fx:id="tbActivityActivity" text="Activity" />
+                  <TableColumn fx:id="tbActivityDay" prefWidth="74.0" text="Day" />
+                  <TableColumn fx:id="tbActivityStart" text="Start" />
+                  <TableColumn fx:id="tbActivityDuration" prefWidth="76.0" text="Duration" />
+                  <TableColumn fx:id="tbActivityRoom" prefWidth="100.0" text="Room" />
+                  <TableColumn fx:id="tbActivityCapacity" prefWidth="91.0" text="Capacity" />
+                  <TableColumn fx:id="tbActivityEnrolled" prefWidth="96.0" text="Enrolled" />
               </columns>
             </TableView>
             <Pane layoutX="5.0" layoutY="379.0" prefHeight="58.0" prefWidth="750.0">
                <children>
                   <ComboBox fx:id="comSubject" layoutX="309.0" layoutY="17.0" onAction="#chooseSubject" prefHeight="25.0" prefWidth="289.0" promptText="Choose Subject" />
                   <Label id="lbEnrolIntoSubject" layoutX="14.0" layoutY="21.0" prefHeight="17.0" prefWidth="289.0" text="Enrol Into Subject" />
+                  <Button fx:id="btnEnroll" layoutX="657.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnEnroll" prefHeight="25.0" prefWidth="72.0" text="Enroll" />
                </children>
             </Pane>
             <Button layoutX="323.0" layoutY="626.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="LogOut" />
-            <TableView fx:id="tbSubject" layoutY="437.0" prefHeight="181.0" prefWidth="755.0">
+            <TableView fx:id="tbSubject" layoutY="437.0" onMouseClicked="#selectActivity" prefHeight="181.0" prefWidth="755.0">
                <columns>
                   <TableColumn fx:id="tbSubjectSubject" prefWidth="85.0" text="Subject" />
                   <TableColumn fx:id="tbSubjectGroup" prefWidth="72.0" text="Group" />

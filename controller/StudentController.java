@@ -8,11 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Activity;
 import model.Student;
 import model.Subject;
@@ -27,6 +25,15 @@ public class StudentController extends Controller implements Initializable {
     Student student;
     University university;
     ObservableList<Subject>subjects;
+    private ObservableList<Activity> myActivity = FXCollections.observableArrayList();
+    Activity selectSubject;
+    Activity selectActivity;
+
+    @FXML
+    private Button btnEnroll;
+
+    @FXML
+    private Button btnWithdraw;
 
     @FXML
     private TableView<Activity> tbSubject;
@@ -58,6 +65,37 @@ public class StudentController extends Controller implements Initializable {
     @FXML
     private TableColumn<Activity, Integer> tbSubjectSubject;
 
+//    ---------------------------Activity Table -------------------------------------
+
+    @FXML
+    private TableView<Activity> tbActivity;
+
+    @FXML
+    private TableColumn<Activity, Integer> tbActivityActivity;
+
+    @FXML
+    private TableColumn<Activity, Integer> tbActivityCapacity;
+
+    @FXML
+    private TableColumn<Activity, String> tbActivityDay;
+
+    @FXML
+    private TableColumn<Activity, Integer> tbActivityDuration;
+
+    @FXML
+    private TableColumn<Activity, Integer> tbActivityEnrolled;
+
+    @FXML
+    private TableColumn<Activity, String> tbActivityGroup;
+
+    @FXML
+    private TableColumn<Activity, String> tbActivityRoom;
+
+    @FXML
+    private TableColumn<Activity, Integer> tbActivityStart;
+
+    @FXML
+    private TableColumn<Activity, Subject> tbActivitySubject;
 
     @FXML
     private ComboBox<String> comSubject;
@@ -78,10 +116,15 @@ public class StudentController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         student=(Student)model;
         university = University.getInstance();
+        buttonDisable();
         loadDataIntoHeader();
         loadDataIntoComboBox();
-        loadDataIntoSubjectTable();
+        loadDataIntoMyActivityTable();
+    }
 
+    private void buttonDisable() {
+        btnEnroll.setDisable(true);
+        btnWithdraw.setDisable(true);
     }
 
     private void loadDataIntoHeader() {
@@ -101,15 +144,59 @@ public class StudentController extends Controller implements Initializable {
 
     }
 
-    private void loadDataIntoSubjectTable() {
+    private void loadDataIntoMyActivityTable() {
+        ObservableList<Activity> activities = student.getActivities();
 
+        tbActivitySubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        tbActivityGroup.setCellValueFactory(new PropertyValueFactory<>("group"));
+        tbActivityActivity.setCellValueFactory(new PropertyValueFactory<>("number"));
+        tbActivityDay.setCellValueFactory(new PropertyValueFactory<>("day"));
+        tbActivityStart.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbActivityDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        tbActivityRoom.setCellValueFactory(new PropertyValueFactory<>("room"));
+        tbActivityCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        tbActivityEnrolled.setCellValueFactory(new PropertyValueFactory<>("enrolled"));
+        tbActivity.setItems(activities);
+    }
+
+    @FXML
+    void btnEnroll(ActionEvent event) {
+        try {
+            student.enrol(selectSubject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        btnEnroll.setDisable(true);
+        loadDataIntoMyActivityTable();
+    }
+    @FXML
+    void btnWithdraw(ActionEvent event) {
+        student.withdraw(selectActivity);
+    }
+    @FXML
+    void selectActivityForWithdraw(MouseEvent event) {
+        selectActivity = tbActivity.getSelectionModel().getSelectedItem();
+        if(selectActivity !=null){
+            btnEnroll.setDisable(true);
+            btnWithdraw.setDisable(false);
+        }
+    }
+
+    @FXML
+    void selectActivity(MouseEvent event) {
+        selectSubject = tbSubject.getSelectionModel().getSelectedItem();
+        boolean isEnroll = student.isEnrolledIn(selectSubject);
+        if(selectSubject !=null && isEnroll==false){
+            btnEnroll.setDisable(false);
+        }else{
+            btnEnroll.setDisable(true);
+        }
     }
 
     @FXML
     void chooseSubject(ActionEvent event) {
         int selectedIndex = comSubject.getSelectionModel().getSelectedIndex();
         ObservableList<Activity> activities = subjects.get(selectedIndex).getActivities();
-
         tbSubjectSubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
         tbSubjectGroup.setCellValueFactory(new PropertyValueFactory<>("group"));
         tbSubjectActivity.setCellValueFactory(new PropertyValueFactory<>("number"));
@@ -120,6 +207,5 @@ public class StudentController extends Controller implements Initializable {
         tbSubjectCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         tbSubjectEnrolled.setCellValueFactory(new PropertyValueFactory<>("enrolled"));
         tbSubject.setItems(activities);
-
     }
 }

@@ -43,7 +43,9 @@ public class Student {
 		Activity existingActivity = activity(activity.getSubject().getNumber(), activity.getGroup());
 		if (existingActivity != null)
 			withdraw(existingActivity);
+		System.out.println(activities.size());
 		activities.add(activity);
+		System.out.println(activities.size());
 		activity.enrol();
 	}
 
