@@ -22,7 +22,7 @@
             <Label layoutX="51.0" layoutY="233.0" prefHeight="17.0" prefWidth="133.0" text="Attendance  :" />
             <Label layoutX="51.0" layoutY="271.0" prefHeight="17.0" prefWidth="133.0" text="Scholarship :" />
             <TextField fx:id="txtStudentNumber" layoutX="176.0" layoutY="143.0" onAction="#isStudentNumber" onKeyReleased="#checkStudentNumberHere" prefHeight="25.0" prefWidth="252.0" />
-            <TextField fx:id="txtStudentName" layoutX="176.0" layoutY="187.0" prefHeight="25.0" prefWidth="252.0" />
+            <TextField fx:id="txtStudentName" layoutX="176.0" layoutY="187.0" onKeyReleased="#checkStudentNameHere" prefHeight="25.0" prefWidth="252.0" />
             <RadioButton fx:id="rdFullTime" layoutX="176.0" layoutY="233.0" mnemonicParsing="false" onAction="#setAttendanceFullTime" text="Full Time" />
             <RadioButton fx:id="rdPartTime" layoutX="266.0" layoutY="233.0" mnemonicParsing="false" onAction="#setAttendancePartTime" text="Part Time" />
             <CheckBox fx:id="checkScholarship" layoutX="176.0" layoutY="271.0" mnemonicParsing="false" onAction="#checkScholarship" />

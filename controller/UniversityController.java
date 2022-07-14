@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -94,15 +95,22 @@ public class UniversityController extends Controller implements Initializable {
     }
 
     public void loadStudentData() {
-        tbNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
-        tbName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tbStudent.setItems(this.students);
+        if(this.students.size()!=0) {
+            tbNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
+            tbName.setCellValueFactory(new PropertyValueFactory<>("name"));
+            tbStudent.setItems(this.students);
+        }else{
+            tbStudent.setPlaceholder(new Label("No students"));
+        }
     }
 
     @FXML
     void btnRemoveStudent(ActionEvent event) {
         Student student = tbStudent.getSelectionModel().getSelectedItem();
         university.remove(student);
+        if(this.students.size()==0){
+            tbStudent.setPlaceholder(new Label("No students"));
+        }
     }
 
 

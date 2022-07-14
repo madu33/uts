@@ -23,10 +23,7 @@ public class AddNewStudentController extends Controller implements Initializable
     String attendance;
     boolean scholarship=false;
     University university;
-
-
-
-
+    boolean isNumberOk,isNameOk,isAttendanceOk=false;
 
     @FXML
     private Button btnAddStudent;
@@ -57,12 +54,16 @@ public class AddNewStudentController extends Controller implements Initializable
 
     @FXML
     void setAttendanceFullTime(ActionEvent event) {
-        attendance="FullTime";
+        attendance="Full Time";
+        isAttendanceOk=true;
+        enableAddButton();
     }
 
     @FXML
     void setAttendancePartTime(ActionEvent event) {
-        attendance="PartTime";
+        attendance="Part Time";
+        isAttendanceOk=true;
+        enableAddButton();
     }
 
     @FXML
@@ -72,7 +73,8 @@ public class AddNewStudentController extends Controller implements Initializable
         System.out.println(scholarship);
         try {
             university.addStudent(stuNumber,stuName,attendance,scholarship);
-
+            Stage stage = (Stage) btnAddStudent.getScene().getWindow();
+            stage.close();
         } catch (Exception e) {
             lbError.setText("Student already exists");
         }
@@ -87,10 +89,28 @@ public class AddNewStudentController extends Controller implements Initializable
     void checkStudentNumberHere(KeyEvent event) {
         String text = txtStudentNumber.getText();
         if(text.length()>0){
-            btnAddStudent.setDisable(false);
+            isNumberOk=true;
         }else{
-            btnAddStudent.setDisable(true);
+            isNumberOk=false;
         }
+        enableAddButton();
+    }
+    @FXML
+    void checkStudentNameHere(KeyEvent event) {
+        String text = txtStudentName.getText();
+        if(text.length()>0){
+            isNameOk=true;
+        }else{
+            isNameOk=false;
+        }
+        enableAddButton();
+    }
+
+    void enableAddButton(){
+        if(isNumberOk && isNameOk && isAttendanceOk){
+            btnAddStudent.setDisable(false);
+        }
+
     }
 
     @FXML

@@ -2,33 +2,41 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="center" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UniversityController">
     
   <stylesheets><URL value="@style.css" /></stylesheets>
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+      <AnchorPane prefHeight="366.0" prefWidth="386.0">
          <children>
-            <ImageView fitHeight="61.0" fitWidth="170.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@uts.png" />
-               </image>
-            </ImageView>
-            <TableView fx:id="tbStudent" layoutX="61.0" layoutY="100.0" onMouseClicked="#selectStudent" prefHeight="222.0" prefWidth="398.0">
+            <Pane id="utsHeader" prefHeight="80.0" prefWidth="386.0" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="48.0" fitWidth="113.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@uts.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="utsFooter" layoutY="292.0" prefHeight="74.0" prefWidth="386.0" />
+            <TableView fx:id="tbStudent" layoutX="50.0" layoutY="86.0" onMouseClicked="#selectStudent" prefHeight="200.0" prefWidth="300.0">
               <columns>
-                <TableColumn fx:id="tbNumber" prefWidth="195.0" text="Number" />
-                <TableColumn fx:id="tbName" prefWidth="202.0" text="Name" />
+                <TableColumn fx:id="tbNumber" prefWidth="110.0" text="Number" />
+                <TableColumn fx:id="tbName" prefWidth="287.0" text="Name" />
               </columns>
             </TableView>
-            <Button fx:id="btnAddStudent" layoutX="61.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#AddNewStudent" prefHeight="25.0" prefWidth="124.0" text="Add Student" />
-            <Button fx:id="btnRemoveStudent" layoutX="202.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnRemoveStudent" prefHeight="25.0" prefWidth="124.0" text="Remove Student " />
-            <Button fx:id="btnLogin" layoutX="343.0" layoutY="349.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="113.0" text="Login" />
+            <Button fx:id="btnAddStudent" layoutX="51.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#AddNewStudent" prefHeight="25.0" prefWidth="92.0" text="Add Student" />
+            <Button fx:id="btnRemoveStudent" layoutX="147.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnRemoveStudent" prefHeight="25.0" prefWidth="113.0" text="Remove Student " />
+            <Button fx:id="btnLogin" layoutX="264.0" layoutY="315.0" mnemonicParsing="false" onAction="#login" prefHeight="17.0" prefWidth="85.0" text="Login" />
+            <Label id="lbTimetableSystem" fx:id="lbTimetableSystem" layoutX="150.0" layoutY="23.0" prefHeight="36.0" prefWidth="215.0" stylesheets="@style.css" text="Timetable System" />
          </children>
       </AnchorPane>
    </children>

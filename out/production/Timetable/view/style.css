@@ -92,3 +92,13 @@ Label {
   -fx-text-fill: white;
   -fx-font-size: 20px;
 }
+#lbTimetableSystem{
+  -fx-text-fill: white;
+  -fx-font-size: 25px;
+}
+#utsHeader{
+  -fx-background-color: #0099cc;
+}
+#utsFooter{
+  -fx-background-color: #252b2b;
+}

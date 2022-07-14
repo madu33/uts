@@ -57,7 +57,7 @@
                   <Button fx:id="btnEnroll" layoutX="657.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnEnroll" prefHeight="25.0" prefWidth="72.0" text="Enroll" />
                </children>
             </Pane>
-            <Button layoutX="323.0" layoutY="626.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="LogOut" />
+            <Button fx:id="btnLogout" layoutX="323.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="36.0" prefWidth="105.0" text="LogOut" />
             <TableView fx:id="tbSubject" layoutY="437.0" onMouseClicked="#selectActivity" prefHeight="181.0" prefWidth="755.0">
                <columns>
                   <TableColumn fx:id="tbSubjectSubject" prefWidth="85.0" text="Subject" />

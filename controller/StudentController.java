@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Activity;
 import model.Student;
 import model.Subject;
@@ -104,6 +105,9 @@ public class StudentController extends Controller implements Initializable {
     private Label lbHeaderName;
 
     @FXML
+    private Button btnLogout;
+
+    @FXML
     private Label stuAttendance;
 
     @FXML
@@ -127,11 +131,23 @@ public class StudentController extends Controller implements Initializable {
         btnWithdraw.setDisable(true);
     }
 
+    @FXML
+    void btnLogout(ActionEvent event) {
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        stage.close();
+    }
+
     private void loadDataIntoHeader() {
         lbHeaderName.setText("Logged in as "+student.getName());
         stuNumber.setText(student.getNumber());
         stuAttendance.setText(student.getAttendance());
-        stuScholarship.setText(student.getScholarship()+"");
+        String text="";
+        if(student.getScholarship()){
+             text="Yes";
+        }else{
+             text="No";
+        }
+        stuScholarship.setText(text);
     }
 
     private void loadDataIntoComboBox() {
@@ -146,17 +162,22 @@ public class StudentController extends Controller implements Initializable {
 
     private void loadDataIntoMyActivityTable() {
         ObservableList<Activity> activities = student.getActivities();
+        if(activities.size() !=0){
+            tbActivitySubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
+            tbActivityGroup.setCellValueFactory(new PropertyValueFactory<>("group"));
+            tbActivityActivity.setCellValueFactory(new PropertyValueFactory<>("number"));
+            tbActivityDay.setCellValueFactory(new PropertyValueFactory<>("day"));
+            tbActivityStart.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbActivityDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+            tbActivityRoom.setCellValueFactory(new PropertyValueFactory<>("room"));
+            tbActivityCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+            tbActivityEnrolled.setCellValueFactory(new PropertyValueFactory<>("enrolled"));
+            tbActivity.setItems(activities);
+        }else{
+            tbActivity.setPlaceholder(new Label("Not enrolled in any activities"));
 
-        tbActivitySubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
-        tbActivityGroup.setCellValueFactory(new PropertyValueFactory<>("group"));
-        tbActivityActivity.setCellValueFactory(new PropertyValueFactory<>("number"));
-        tbActivityDay.setCellValueFactory(new PropertyValueFactory<>("day"));
-        tbActivityStart.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbActivityDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        tbActivityRoom.setCellValueFactory(new PropertyValueFactory<>("room"));
-        tbActivityCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
-        tbActivityEnrolled.setCellValueFactory(new PropertyValueFactory<>("enrolled"));
-        tbActivity.setItems(activities);
+        }
+
     }
 
     @FXML
@@ -172,6 +193,10 @@ public class StudentController extends Controller implements Initializable {
     @FXML
     void btnWithdraw(ActionEvent event) {
         student.withdraw(selectActivity);
+        ObservableList<Activity> activities = student.getActivities();
+        if(activities.size()==0){
+            tbActivity.setPlaceholder(new Label("Not enrolled in any activities"));
+        }
     }
     @FXML
     void selectActivityForWithdraw(MouseEvent event) {
