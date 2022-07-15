@@ -7,7 +7,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="center" spacing="10" styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentController">
@@ -18,23 +21,32 @@
          <children>
             <Pane id="studentHeader" prefHeight="139.0" prefWidth="755.0" stylesheets="@style.css">
                <children>
-                  <Label id="lbHeaderName" fx:id="lbHeaderName" layoutX="16.0" layoutY="15.0" prefHeight="65.0" prefWidth="488.0" />
-                  <Pane id="lbDetailsPane" layoutX="511.0" layoutY="13.0" prefHeight="110.0" prefWidth="229.0">
+                  <Label id="lbHeaderName" fx:id="lbHeaderName" layoutX="16.0" layoutY="15.0" prefHeight="65.0" prefWidth="476.0" />
+                  <GridPane layoutX="501.0" layoutY="10.0" prefHeight="120.0" prefWidth="240.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <Label fx:id="stuNumber" layoutX="120.0" layoutY="20.0" prefHeight="17.0" prefWidth="105.0" />
-                        <Label fx:id="stuAttendance" layoutX="120.0" layoutY="44.0" prefHeight="17.0" prefWidth="105.0" />
-                        <Label fx:id="stuScholarship" layoutX="120.0" layoutY="70.0" prefHeight="17.0" prefWidth="105.0" />
-                        <Label layoutX="7.0" layoutY="21.0" prefHeight="17.0" prefWidth="105.0" text="Student Number : " />
-                        <Label layoutX="7.0" layoutY="45.0" prefHeight="17.0" prefWidth="105.0" text="Attendance  :" />
-                        <Label layoutX="7.0" layoutY="71.0" prefHeight="17.0" prefWidth="105.0" text="Scholarship :" />
+                        <Label prefHeight="17.0" prefWidth="105.0" text="Student Number : " />
+                        <Label prefHeight="17.0" prefWidth="105.0" text="Attendance  :" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="105.0" text="Scholarship :" GridPane.rowIndex="2" />
+                        <Label fx:id="stuNumber" prefHeight="17.0" prefWidth="105.0" GridPane.columnIndex="1" />
+                        <Label fx:id="stuAttendance" prefHeight="17.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="stuScholarship" prefHeight="17.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
-                  </Pane>
+                  </GridPane>
                </children>
             </Pane>
             <Pane layoutY="139.0" prefHeight="58.0" prefWidth="750.0">
                <children>
-                  <Label id="lbMyActivity" layoutX="19.0" layoutY="21.0" prefHeight="17.0" prefWidth="256.0" text="My Activities" />
                   <Button fx:id="btnWithdraw" layoutX="664.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnWithdraw" text="Withdraw" />
+                  <Label id="lbMyActivity" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="256.0" text="My Activities" />
                </children>
             </Pane>
             <TableView fx:id="tbActivity" layoutY="198.0" onMouseClicked="#selectActivityForWithdraw" prefHeight="181.0" prefWidth="755.0">
@@ -53,11 +65,10 @@
             <Pane layoutX="5.0" layoutY="379.0" prefHeight="58.0" prefWidth="750.0">
                <children>
                   <ComboBox fx:id="comSubject" layoutX="309.0" layoutY="17.0" onAction="#chooseSubject" prefHeight="25.0" prefWidth="289.0" promptText="Choose Subject" />
-                  <Label id="lbEnrolIntoSubject" layoutX="14.0" layoutY="21.0" prefHeight="17.0" prefWidth="289.0" text="Enrol Into Subject" />
+                  <Label id="lbEnrolIntoSubject" layoutX="8.0" layoutY="14.0" prefHeight="17.0" prefWidth="289.0" text="Enrol Into Subject" />
                   <Button fx:id="btnEnroll" layoutX="657.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnEnroll" prefHeight="25.0" prefWidth="72.0" text="Enroll" />
                </children>
             </Pane>
-            <Button fx:id="btnLogout" layoutX="323.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="36.0" prefWidth="105.0" text="LogOut" />
             <TableView fx:id="tbSubject" layoutY="437.0" onMouseClicked="#selectActivity" prefHeight="181.0" prefWidth="755.0">
                <columns>
                   <TableColumn fx:id="tbSubjectSubject" prefWidth="85.0" text="Subject" />
@@ -71,6 +82,11 @@
                   <TableColumn fx:id="tbSubjectEnrolled" prefWidth="96.0" text="Enrolled" />
                </columns>
             </TableView>
+            <Pane layoutY="618.0" prefHeight="50.0" prefWidth="755.0" styleClass="footer">
+               <children>
+                  <Button fx:id="btnLogout" layoutX="337.0" layoutY="7.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="30.0" prefWidth="86.0" text="LogOut" />
+               </children>
+            </Pane>
          </children></AnchorPane>
    </children>
 	

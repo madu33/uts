@@ -49,7 +49,7 @@ Label {
 }
 
 .button {
-  -fx-text-fill: white;
+  -fx-text-fill: #ffffff;
   /* -fx-font-family: "Arial"; */
   -fx-font-weight: bold;
   -fx-background-color: #0099cc;
@@ -61,15 +61,16 @@ Label {
 }
 #lbLabel{
   -fx-background-color: #0099cc;
-  -fx-font-size: 30px;
-  -fx-text-fill: white;
+  -fx-font-size: 32px;
+  -fx-font-family: Arial;
+  -fx-text-fill: #ffffff;
 }
 #detailsPanel{
-  -fx-background-color: white;
+  -fx-background-color: #ffffff;
 }
 
 .error{
-  -fx-text-fill: red;
+  -fx-text-fill: FIREBRICK;
   -fx-font-weight: bold;
   -fx-font-size: 12px;
 }
@@ -79,26 +80,44 @@ Label {
 }
 #lbHeaderName{
   -fx-font-size: 30px;
-  -fx-text-fill: white;
+  -fx-text-fill: #ffffff;
 }
 #lbDetailsPane{
-  -fx-background-color: white;
+  -fx-background-color: #ffffff;
 }
 #lbMyActivity{
-  -fx-text-fill: white;
+  -fx-text-fill: #ffffff;
   -fx-font-size: 20px;
 }
 #lbEnrolIntoSubject{
-  -fx-text-fill: white;
+  -fx-text-fill: #ffffff;
   -fx-font-size: 20px;
 }
 #lbTimetableSystem{
-  -fx-text-fill: white;
-  -fx-font-size: 25px;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 32px;
+  -fx-font-family: Arial;
 }
 #utsHeader{
   -fx-background-color: #0099cc;
 }
 #utsFooter{
   -fx-background-color: #252b2b;
+}
+#addNewStudentFooter{
+  -fx-background-color: #252b2b;
+}
+.button{
+  -fx-background-color: #0099cc;
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+}
+.button:hover{
+  -fx-background-color: #00bfff;
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+}
+.label{
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
 }

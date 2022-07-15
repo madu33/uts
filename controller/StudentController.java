@@ -18,6 +18,7 @@ import model.Subject;
 import model.University;
 
 import javax.sound.sampled.Control;
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -140,7 +141,13 @@ public class StudentController extends Controller implements Initializable {
     private void loadDataIntoHeader() {
         lbHeaderName.setText("Logged in as "+student.getName());
         stuNumber.setText(student.getNumber());
-        stuAttendance.setText(student.getAttendance());
+        if(student.getAttendance().equalsIgnoreCase("ft")){
+            stuAttendance.setText("Full Time");
+        }
+        if(student.getAttendance().equalsIgnoreCase("pt")){
+            stuAttendance.setText("Part Time");
+        }
+
         String text="";
         if(student.getScholarship()){
              text="Yes";
@@ -185,7 +192,7 @@ public class StudentController extends Controller implements Initializable {
         try {
             student.enrol(selectSubject);
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Activity is already full");
         }
         btnEnroll.setDisable(true);
         loadDataIntoMyActivityTable();

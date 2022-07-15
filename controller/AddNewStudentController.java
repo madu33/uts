@@ -54,14 +54,14 @@ public class AddNewStudentController extends Controller implements Initializable
 
     @FXML
     void setAttendanceFullTime(ActionEvent event) {
-        attendance="Full Time";
+        attendance="ft";
         isAttendanceOk=true;
         enableAddButton();
     }
 
     @FXML
     void setAttendancePartTime(ActionEvent event) {
-        attendance="Part Time";
+        attendance="pt";
         isAttendanceOk=true;
         enableAddButton();
     }
